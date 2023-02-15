@@ -1,0 +1,44 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="KavenDB" Class="DBInstDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="WebSettings" ConnectionString="Data Source=KAVENPC;Initial Catalog=KavenDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="KavenDBConnectionString" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.Rooms" Member="Rooms">
+    <Type Name="Room">
+      <Column Name="RoomID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RoomName" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
+      <Column Name="DateBookedFrom" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="DateBookedTo" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="IsActiveBooking" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Users" Member="Users">
+    <Type Name="User">
+      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Surname" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
+      <Column Name="CellNumber" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="IDNumber" Type="System.String" DbType="NVarChar(13)" CanBeNull="true" />
+      <Column Name="UsersPhoto" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Function Name="dbo.sp_DeleteRoom" Method="sp_DeleteRoom">
+    <Parameter Name="RoomID" Parameter="roomID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_InsertRoom" Method="sp_InsertRoom">
+    <Parameter Name="RoomName" Parameter="roomName" Type="System.String" DbType="NVarChar(30)" />
+    <Parameter Name="DateBookedFrom" Parameter="dateBookedFrom" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="DateBookedTo" Parameter="dateBookedTo" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="CreatedOn" Parameter="createdOn" Type="System.DateTime" DbType="Date" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_UpdateRoom" Method="sp_UpdateRoom">
+    <Parameter Name="RoomID" Parameter="roomID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="RoomName" Parameter="roomName" Type="System.String" DbType="NVarChar(30)" />
+    <Parameter Name="DateBookedFrom" Parameter="dateBookedFrom" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="DateBookedTo" Parameter="dateBookedTo" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="CreatedOn" Parameter="createdOn" Type="System.DateTime" DbType="Date" />
+    <Return Type="System.Int32" />
+  </Function>
+</Database>
