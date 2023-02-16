@@ -11,79 +11,79 @@ namespace SamanthasHotelTest
 {
 
 
-    public partial class BookRoom
+    public partial class AddNewUser
     {
 
         /// <summary>
-        /// PageNote control.
+        /// PageNoteAddUser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlGenericControl PageNote;
+        protected global::System.Web.UI.HtmlControls.HtmlGenericControl PageNoteAddUser;
 
         /// <summary>
-        /// dtpDateBookedFrom control.
+        /// txtName control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl dtpDateBookedFrom;
+        protected global::System.Web.UI.WebControls.TextBox txtName;
 
         /// <summary>
-        /// dtpDateBookedTo control.
+        /// txtSurname control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl dtpDateBookedTo;
+        protected global::System.Web.UI.WebControls.TextBox txtSurname;
 
         /// <summary>
-        /// cmbRoomType control.
+        /// txtEmail control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList cmbRoomType;
+        protected global::System.Web.UI.WebControls.TextBox txtEmail;
 
         /// <summary>
-        /// Inside control.
+        /// txtCellNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListItem Inside;
+        protected global::System.Web.UI.WebControls.TextBox txtCellNumber;
 
         /// <summary>
-        /// Outside control.
+        /// txtIdNumber control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListItem Outside;
+        protected global::System.Web.UI.WebControls.TextBox txtIdNumber;
 
         /// <summary>
-        /// Tent control.
+        /// inpAttachFile control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.ListItem Tent;
+        protected global::System.Web.UI.HtmlControls.HtmlInputFile inpAttachFile;
 
         /// <summary>
-        /// btnSubmit control.
+        /// BtnSubmitBooking control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnSubmit;
+        protected global::System.Web.UI.WebControls.Button BtnSubmitBooking;
     }
 }

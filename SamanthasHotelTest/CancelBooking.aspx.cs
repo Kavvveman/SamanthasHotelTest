@@ -13,5 +13,11 @@ namespace SamanthasHotelTest
         {
 
         }
+
+        //protected void GridView1_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        //{
+        //    string userName = (string)GridView1.DataKeys[e.RowIndex].Value;
+        //    DeleteUser(userName);
+        //}
     }
 }

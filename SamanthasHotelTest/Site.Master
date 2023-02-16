@@ -62,6 +62,7 @@
 
                         <li><a runat="server" href="~/RescheduleBooking">Reschedule Booking</a></li>
 
+                       <li><a runat="server" href="~/CreateUser">Create A User</a></li>
                     </ul>
                 </div>
             </div>

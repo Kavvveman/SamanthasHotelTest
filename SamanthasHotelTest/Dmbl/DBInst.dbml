@@ -8,6 +8,7 @@
       <Column Name="DateBookedTo" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="CreatedOn" Type="System.DateTime" DbType="Date" CanBeNull="true" />
       <Column Name="IsActiveBooking" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Room_Booking" Member="Bookings" ThisKey="RoomID" OtherKey="RoomID" Type="Booking" />
     </Type>
   </Table>
   <Table Name="dbo.Users" Member="Users">
@@ -20,6 +21,20 @@
       <Column Name="IDNumber" Type="System.String" DbType="NVarChar(13)" CanBeNull="true" />
       <Column Name="UsersPhoto" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
       <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Association Name="User_Booking" Member="Bookings" ThisKey="UserID" OtherKey="UserID" Type="Booking" />
+    </Type>
+  </Table>
+  <Table Name="dbo.Bookings" Member="Bookings">
+    <Type Name="Booking">
+      <Column Name="BookingID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RoomID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="CellNumber" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
+      <Column Name="IsActiveBooking" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="User_Booking" Member="User" ThisKey="UserID" OtherKey="UserID" Type="User" IsForeignKey="true" />
+      <Association Name="Room_Booking" Member="Room" ThisKey="RoomID" OtherKey="RoomID" Type="Room" IsForeignKey="true" />
     </Type>
   </Table>
   <Function Name="dbo.sp_DeleteRoom" Method="sp_DeleteRoom">
@@ -39,6 +54,15 @@
     <Parameter Name="DateBookedFrom" Parameter="dateBookedFrom" Type="System.DateTime" DbType="Date" />
     <Parameter Name="DateBookedTo" Parameter="dateBookedTo" Type="System.DateTime" DbType="Date" />
     <Parameter Name="CreatedOn" Parameter="createdOn" Type="System.DateTime" DbType="Date" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_InsertUser" Method="sp_InsertUser">
+    <Parameter Name="Name" Parameter="name" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Surname" Parameter="surname" Type="System.String" DbType="NVarChar(50)" />
+    <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(255)" />
+    <Parameter Name="CellNumber" Parameter="cellNumber" Type="System.String" DbType="NVarChar(10)" />
+    <Parameter Name="IDNumber" Parameter="iDNumber" Type="System.String" DbType="NVarChar(13)" />
+    <Parameter Name="UsersPhoto" Parameter="usersPhoto" Type="System.Data.Linq.Binary" DbType="Image" />
     <Return Type="System.Int32" />
   </Function>
 </Database>
