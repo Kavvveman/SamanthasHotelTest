@@ -17,6 +17,15 @@ namespace SamanthasHotelTest
             //}
         }
 
-	}
+        protected void dgBookings_PageIndexChanged(object source, DataGridPageChangedEventArgs e)
+        {
+
+        }
+
+        protected void dgBookings_EditCommand(object source, DataGridCommandEventArgs e)
+        {
+
+        }
+    }
     
 }

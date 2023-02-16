@@ -4,7 +4,8 @@
             <div class="row">
              
             <h4>Create a new booking!</h4>
-                <p id="PageNote" hidden="hidden" runat="server" ></p>
+
+                <p id="PageNote" visible="false" runat="server" ></p>
 
             <br />
 

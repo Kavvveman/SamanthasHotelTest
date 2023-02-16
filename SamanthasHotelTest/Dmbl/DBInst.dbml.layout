@@ -8,31 +8,17 @@
         <elementListCompartment Id="95b4a3dc-7e7d-4427-b73b-1c9a1b5fa425" absoluteBounds="2.64, 0.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="d49c3afc-aa3a-4c07-b121-67b03967b589" absoluteBounds="6.375, 0.5, 2, 2.3478011067708335">
+    <classShape Id="d49c3afc-aa3a-4c07-b121-67b03967b589" absoluteBounds="6.75, 0.5, 2, 2.3478011067708335">
       <DataClassMoniker Name="/DBInstDataContext/User" />
       <nestedChildShapes>
-        <elementListCompartment Id="8f7b94e1-d98c-4c0a-bebe-f7444f04615c" absoluteBounds="6.39, 0.96, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="8f7b94e1-d98c-4c0a-bebe-f7444f04615c" absoluteBounds="6.765, 0.96, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <classShape Id="cf6d5820-f481-438b-ab96-c1895bd89ea3" absoluteBounds="5.375, 3.5, 2, 2.1554996744791666">
+    <classShape Id="55d47814-30af-4323-be06-9e75d0c709cd" absoluteBounds="4.375, 3.125, 2, 2.1554996744791666">
       <DataClassMoniker Name="/DBInstDataContext/Booking" />
       <nestedChildShapes>
-        <elementListCompartment Id="e234add6-7790-4735-bf88-921e879d1277" absoluteBounds="5.39, 3.96, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+        <elementListCompartment Id="26b6cf60-67c4-4325-8db5-2dda00237ba9" absoluteBounds="4.39, 3.585, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
       </nestedChildShapes>
     </classShape>
-    <associationConnector edgePoints="[(6.875 : 2.84780110677083); (6.875 : 3.5)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/DBInstDataContext/User/User_Booking" />
-      <nodes>
-        <classShapeMoniker Id="d49c3afc-aa3a-4c07-b121-67b03967b589" />
-        <classShapeMoniker Id="cf6d5820-f481-438b-ab96-c1895bd89ea3" />
-      </nodes>
-    </associationConnector>
-    <associationConnector edgePoints="[(3.625 : 2.4631982421875); (3.625 : 4.57774983723958); (5.375 : 4.57774983723958)]" fixedFrom="Algorithm" fixedTo="Algorithm">
-      <AssociationMoniker Name="/DBInstDataContext/Room/Room_Booking" />
-      <nodes>
-        <classShapeMoniker Id="78ff11a2-1faf-456c-ad29-22fff3686110" />
-        <classShapeMoniker Id="cf6d5820-f481-438b-ab96-c1895bd89ea3" />
-      </nodes>
-    </associationConnector>
   </nestedChildShapes>
 </ordesignerObjectsDiagram>
