@@ -14,7 +14,8 @@
 
              <h6>Check Out Date</h6>
             <input id='dtpDateBookedTo' type="date" runat="server" required/>
-
+                <br />
+                <br />
 
             <h6 style="display: inline">Type of room Wanted</h6>
             <asp:DropDownList ID="cmbRoomType" runat="server" >

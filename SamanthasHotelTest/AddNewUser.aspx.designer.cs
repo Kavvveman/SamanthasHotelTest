@@ -78,12 +78,12 @@ namespace SamanthasHotelTest
         protected global::System.Web.UI.HtmlControls.HtmlInputFile inpAttachFile;
 
         /// <summary>
-        /// BtnSubmitBooking control.
+        /// BtnCreateUser control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button BtnSubmitBooking;
+        protected global::System.Web.UI.WebControls.Button BtnCreateUser;
     }
 }

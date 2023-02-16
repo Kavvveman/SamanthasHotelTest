@@ -37,16 +37,21 @@ namespace SamanthasHotelTest
                 DBInstDataContext _DBC = new DBInstDataContext();
 
                 //Change to Insert into Bookings Table
-                _DBC.sp
-                _DBC.sp_InsertRoom(RoomType, FromDate, ToDate, DateTime.Now);
+                // Make instance of User Class
 
-                PageNote.InnerHtml = "Room Has been successfully booked";
+                User CurrentUser = new User();
+                _DBC.sp_InsertBooking(CurrentUser.UserID, CurrentUser.Name, true);
+                PageNote.InnerText = cmbRoomType.SelectedValue.ToString() + "Room Has been successfully booked by "+ CurrentUser.Name;
+
+                //_DBC.sp_InsertRoom(RoomType, FromDate, ToDate, DateTime.Now);
+
+
             }
             catch (Exception ex)
             {
                 PageNote.InnerHtml = "Error Has Occured " + ex.Message.ToString();
                 // PageNote.InnerHtml= ("Error Has Occured +" ex.Message;
-                throw;
+                //throw;
             }
         }
         

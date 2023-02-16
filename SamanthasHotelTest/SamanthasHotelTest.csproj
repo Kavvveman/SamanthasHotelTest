@@ -130,7 +130,6 @@
   <ItemGroup>
     <Content Include="About.aspx" />
     <Content Include="AddNewUser.aspx" />
-    <Content Include="AddUser.aspx" />
     <Content Include="BookRoom.aspx" />
     <Content Include="CancelBooking.aspx" />
     <Content Include="Contact.aspx" />
@@ -139,17 +138,8 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\Site.css" />
+    <Content Include="Content\Userpic.jpg" />
     <Content Include="Default.aspx" />
-    <Content Include="Dmbl\DbEntity.Context.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>DbEntity.Context.cs</LastGenOutput>
-      <DependentUpon>DbEntity.edmx</DependentUpon>
-    </Content>
-    <Content Include="Dmbl\DbEntity.tt">
-      <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>DbEntity.edmx</DependentUpon>
-      <LastGenOutput>DbEntity.cs</LastGenOutput>
-    </Content>
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -165,13 +155,6 @@
       <Generator>MSLinqToSQLGenerator</Generator>
       <LastGenOutput>DBInst.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
-    </Content>
-    <EntityDeploy Include="Dmbl\DbEntity.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>DbEntity.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Dmbl\DbEntity.edmx.diagram">
-      <DependentUpon>DbEntity.edmx</DependentUpon>
     </Content>
     <None Include="Dmbl\DBInst.dbml.layout">
       <DependentUpon>DBInst.dbml</DependentUpon>
@@ -224,13 +207,6 @@
     <Compile Include="AddNewUser.aspx.designer.cs">
       <DependentUpon>AddNewUser.aspx</DependentUpon>
     </Compile>
-    <Compile Include="AddUser.aspx.cs">
-      <DependentUpon>AddUser.aspx</DependentUpon>
-      <SubType>ASPXCodeBehind</SubType>
-    </Compile>
-    <Compile Include="AddUser.aspx.designer.cs">
-      <DependentUpon>AddUser.aspx</DependentUpon>
-    </Compile>
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="About.aspx.cs">
       <DependentUpon>About.aspx</DependentUpon>
@@ -261,21 +237,6 @@
     <Compile Include="Contact.aspx.designer.cs">
       <DependentUpon>Contact.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Dmbl\DbEntity.Context.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DbEntity.Context.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Dmbl\DbEntity.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DbEntity.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Dmbl\DbEntity.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>DbEntity.edmx</DependentUpon>
-    </Compile>
     <Compile Include="Dmbl\DBInst.designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -287,12 +248,6 @@
     </Compile>
     <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
-    </Compile>
-    <Compile Include="Dmbl\Room.cs">
-      <DependentUpon>DbEntity.tt</DependentUpon>
-    </Compile>
-    <Compile Include="Dmbl\User.cs">
-      <DependentUpon>DbEntity.tt</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

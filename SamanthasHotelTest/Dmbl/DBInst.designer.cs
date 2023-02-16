@@ -99,13 +99,6 @@ namespace SamanthasHotelTest.Dmbl
 			return ((int)(result.ReturnValue));
 		}
 		
-		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_InsertRoom")]
-		public int sp_InsertRoom([global::System.Data.Linq.Mapping.ParameterAttribute(Name="RoomName", DbType="NVarChar(30)")] string roomName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DateBookedFrom", DbType="Date")] System.Nullable<System.DateTime> dateBookedFrom, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DateBookedTo", DbType="Date")] System.Nullable<System.DateTime> dateBookedTo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CreatedOn", DbType="Date")] System.Nullable<System.DateTime> createdOn)
-		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), roomName, dateBookedFrom, dateBookedTo, createdOn);
-			return ((int)(result.ReturnValue));
-		}
-		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_UpdateRoom")]
 		public int sp_UpdateRoom([global::System.Data.Linq.Mapping.ParameterAttribute(Name="RoomID", DbType="Int")] System.Nullable<int> roomID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="RoomName", DbType="NVarChar(30)")] string roomName, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DateBookedFrom", DbType="Date")] System.Nullable<System.DateTime> dateBookedFrom, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DateBookedTo", DbType="Date")] System.Nullable<System.DateTime> dateBookedTo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CreatedOn", DbType="Date")] System.Nullable<System.DateTime> createdOn)
 		{
@@ -121,9 +114,9 @@ namespace SamanthasHotelTest.Dmbl
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_InsertBooking")]
-		public int sp_InsertBooking([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="Int")] System.Nullable<int> userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="RoomID", DbType="Int")] System.Nullable<int> roomID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Name", DbType="NVarChar(30)")] string name, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CellNumber", DbType="NVarChar(13)")] string cellNumber, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="IsActiveBooking", DbType="Bit")] System.Nullable<bool> isActiveBooking)
+		public int sp_InsertBooking([global::System.Data.Linq.Mapping.ParameterAttribute(Name="UserID", DbType="Int")] System.Nullable<int> userID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="Name", DbType="NVarChar(30)")] string name, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="IsActiveBooking", DbType="Bit")] System.Nullable<bool> isActiveBooking)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userID, roomID, name, cellNumber, isActiveBooking);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), userID, name, isActiveBooking);
 			return ((int)(result.ReturnValue));
 		}
 	}
