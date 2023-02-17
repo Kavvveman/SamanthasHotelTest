@@ -5,6 +5,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace SamanthasHotelTest
 {
@@ -34,17 +35,19 @@ namespace SamanthasHotelTest
                 {
                     DaysRoomisBooked = 1;
                 }
-                DBInstDataContext _DBC = new DBInstDataContext();
+                using (DBInstDataContext _DBC = new DBInstDataContext())
+                {
+                    User CurrentUser = new User();
+                    _DBC.sp_InsertBooking(CurrentUser.UserID, CurrentUser.Name, FromDate, ToDate, true);
+                }
 
                 //Change to Insert into Bookings Table
                 // Make instance of User Class
 
-                User CurrentUser = new User();
-                _DBC.sp_InsertBooking(CurrentUser.UserID, CurrentUser.Name, FromDate, ToDate, true);
 
                 PageNote.Visible= true;
 
-                PageNote.InnerText = cmbRoomType.SelectedValue.ToString() + "Room Has been successfully booked by "+ CurrentUser.Name;
+                PageNote.InnerText = cmbRoomType.SelectedValue.ToString() + "Room Has been successfully booked by ";
             }
             catch (Exception ex)
             {

@@ -37,7 +37,7 @@
 
 
         <label for="txtEmail">Email</label>
-        <asp:TextBox id="txtEmail"  runat="server"  ToolTip="Email">  </asp:TextBox>
+        <asp:TextBox id="txtEmail"  runat="server" ToolTip="Email">  </asp:TextBox>
         <%--Check For Regex?--%>
 
         <br />
@@ -51,6 +51,9 @@
 
         <label for="txtIdNumber">IDNumber</label>
        <asp:TextBox id="txtIdNumber" maxlengh="10" runat="server"  required="true"> </asp:TextBox>
+
+        <asp:RegularExpressionValidator id="RegularExpressionValidator1" runat="server" ErrorMessage="IDNumber Can only Contain Numbers" ValidationExpression="[0-9]*" ControlToValidate="txtIdNumber"></asp:RegularExpressionValidator>
+
 
         <br />
 

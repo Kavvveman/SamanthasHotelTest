@@ -2,11 +2,13 @@
 using SamanthasHotelTest.Dmbl;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace SamanthasHotelTest
 {
@@ -24,7 +26,6 @@ namespace SamanthasHotelTest
 
         private void PopulateBookings()
         {
-            BindingSource _source = new BindingSource();
             DBInstDataContext ctx = new DBInstDataContext();
             gvBookings.DataSource = ctx.sp_SelectAllBookings();
             gvBookings.DataBind();
@@ -70,17 +71,14 @@ namespace SamanthasHotelTest
 
         protected void gvBookings_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-            GridViewRow row = gvBookings.Rows[e.RowIndex];
 
+            DBInstDataContext ctx = new DBInstDataContext();
             int BookingID = Convert.ToInt32(gvBookings.DataKeys[e.RowIndex].Values[0]);
-
-            var rowcntrl = row.Cells[0].Controls[0];
-
-            
-
-            e.Values.RemoveAt(gvBookings.SelectedIndex);
-
+            ctx.sp_DeleteBooking(BookingID);
+            ctx.SubmitChanges();
             PopulateBookings();
+
+
         }
 
 
@@ -90,6 +88,17 @@ namespace SamanthasHotelTest
         protected void btnCancelBooking_Click(object sender, EventArgs e)
         {
             GridViewRow row = gvBookings.Rows[0];
+        }
+
+        protected void gvBookings_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Delete")
+            {
+                var id = Int32.Parse((string)e.CommandArgument);
+                Session.Add("BookingID", id);
+                gvBookings.DeleteRow(id);
+                PopulateBookings();
+            }
         }
     }
 }

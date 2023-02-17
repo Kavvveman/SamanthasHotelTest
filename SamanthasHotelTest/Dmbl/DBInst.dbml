@@ -33,10 +33,6 @@
       <Column Name="IsActiveBooking" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
     </Type>
   </Table>
-  <Function Name="dbo.sp_DeleteRoom" Method="sp_DeleteRoom">
-    <Parameter Name="RoomID" Parameter="roomID" Type="System.Int32" DbType="Int" />
-    <Return Type="System.Int32" />
-  </Function>
   <Function Name="dbo.sp_UpdateRoom" Method="sp_UpdateRoom">
     <Parameter Name="RoomID" Parameter="roomID" Type="System.Int32" DbType="Int" />
     <Parameter Name="RoomName" Parameter="roomName" Type="System.String" DbType="NVarChar(30)" />
@@ -54,21 +50,32 @@
     <Parameter Name="UsersPhoto" Parameter="usersPhoto" Type="System.Data.Linq.Binary" DbType="Image" />
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.sp_SelectAllBookings" Method="sp_SelectAllBookings">
-    <ElementType Name="sp_SelectAllBookingsResult">
-      <Column Name="BookingID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="DateCreated" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="IsActiveBooking" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-    </ElementType>
-  </Function>
   <Function Name="dbo.sp_InsertBooking" Method="sp_InsertBooking">
     <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
     <Parameter Name="Name" Parameter="name" Type="System.String" DbType="NVarChar(30)" />
     <Parameter Name="DateReservedTo" Parameter="dateReservedTo" Type="System.DateTime" DbType="DateTime" />
     <Parameter Name="DateReservedFrom" Parameter="dateReservedFrom" Type="System.DateTime" DbType="DateTime" />
     <Parameter Name="IsActiveBooking" Parameter="isActiveBooking" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_SelectAllBookings" Method="sp_SelectAllBookings">
+    <ElementType Name="sp_SelectAllBookingsResult">
+      <Column Name="BookingID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="DateReservedFrom" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="DateReservedTo" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="DateCreated" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+      <Column Name="IsActiveBooking" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </ElementType>
+  </Function>
+  <Function Name="dbo.sp_DeleteBooking" Method="sp_DeleteBooking">
+    <Parameter Name="BookingID" Parameter="bookingID" Type="System.Int32" DbType="Int" />
+    <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_updateDate" Method="sp_updateDate">
+    <Parameter Name="BookingID" Parameter="bookingID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="NewDate" Parameter="newDate" Type="System.DateTime" DbType="DateTime" />
     <Return Type="System.Int32" />
   </Function>
 </Database>

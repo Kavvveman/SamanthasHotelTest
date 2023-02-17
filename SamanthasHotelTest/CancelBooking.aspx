@@ -16,25 +16,24 @@
     </asp:DataGrid>--%>
 
     <asp:GridView ID="gvBookings" runat="server" AutoGenerateColumns="false" DataKeyNames="BookingID"
-        PageSize="10" AllowPaging="true" OnPageIndexChanging="gvBookings_PageIndexChanging" OnRowDeleting="gvBookings_RowDeleting" OnRowDeleted="gvBookings_RowDeleted">
+        PageSize="10" AllowPaging="true" OnPageIndexChanging="gvBookings_PageIndexChanging" DeleteMethod="" OnRowCommand="gvBookings_RowCommand" OnRowDeleting="gvBookings_RowDeleting"  OnRowDeleted="gvBookings_RowDeleted">
 
         <Columns>
             <asp:BoundField DataField="BookingID" HeaderText="Booking Id" />
             <asp:BoundField DataField="UserID" HeaderText="User ID" />
             <asp:BoundField DataField="Name" HeaderText="Name" />
-                       <asp:BoundField DataField="DateBookedTo" HeaderText="DateBookedTo" />
-                       <asp:BoundField DataField="DateBookedFrom" HeaderText="DateBookedFrom" />
+             <asp:BoundField DataField="DateReservedTo" HeaderText="Date Reserved To" />
+             <asp:BoundField DataField="DateReservedFrom" HeaderText="Date Reserved From" />
             <%--Dates to be reserved--%>
             <asp:BoundField DataField="DateCreated" HeaderText="DateCreated" />
             <asp:BoundField DataField="IsActiveBooking" HeaderText="IsActiveBooking" />
-
-           <asp:CheckBoxField  runat="server" HeaderText="Select"/>
+            <asp:CommandField ShowDeleteButton="true" HeaderText="Delete" ButtonType="Button"/>
        
        
         </Columns>
     </asp:GridView>
 
-    <asp:Button runat="server" ID="btnCancelBooking" OnClick="btnCancelBooking_Click" Text="Cancel selected booking" />
+   
 
 
 
