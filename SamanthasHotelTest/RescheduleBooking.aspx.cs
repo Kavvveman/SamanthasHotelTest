@@ -1,10 +1,13 @@
 ﻿using SamanthasHotelTest.Dmbl;
 using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Common.CommandTrees.ExpressionBuilder;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Windows.Forms;
 
 namespace SamanthasHotelTest
 {
@@ -17,6 +20,8 @@ namespace SamanthasHotelTest
                 this.PopulateBookings();
             }
         }
+        DBInstDataContext ctx = new DBInstDataContext();
+
         private void PopulateBookings()
         {
             DBInstDataContext ctx = new DBInstDataContext();
@@ -50,19 +55,64 @@ namespace SamanthasHotelTest
         {
 
         }
-
         protected void gvBookings_RowUpdated(object sender, GridViewUpdatedEventArgs e)
         {
-            DBInstDataContext ctx = new DBInstDataContext();
-            txtNote.InnerText = "Record Updated successfully";
-            PopulateBookings();
-          
+            //e.NewValues
+            //e.OldValues.
+            //gvBookings.EditIndex = e.KeepInEditMode;
+            //DBInstDataContext ctx = new DBInstDataContext();
+            //txtNote.InnerText = "Record Updated successfully";
+            //PopulateBookings();
+            //Session
+
         }
 
         protected void gvBookings_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
 
-            txtNote.InnerText = "Record Updated successfully";
+        }
+
+        protected void gvBookings_RowCommand(object sender, GridViewCommandEventArgs e)
+        {
+            if (e.CommandName == "Update")
+            {
+                editModal.Visible = true;
+
+                DBInstDataContext ctx = new DBInstDataContext();
+
+                Booking NewData = new Booking();
+                if (gvBookings.SelectedRow.Cells[1] != null)
+                {
+
+                }
+                NewData.BookingID = Convert.ToInt32(gvBookings.SelectedRow.Cells[1].Text);
+                NewData.DateReservedFrom = Convert.ToDateTime(gvBookings.SelectedRow.Cells[4].Text);
+                NewData.DateReservedTo = Convert.ToDateTime(gvBookings.SelectedRow.Cells[5].Text);
+
+
+
+                ctx.sp_UpdateRoom1(NewData.BookingID, NewData.DateReservedFrom, NewData.DateReservedTo, DateTime.Now);
+
+                ctx.SubmitChanges();
+                PopulateBookings();
+                //  ctx
+                //Get and Update the value clicked on
+
+            }
+            if (e.CommandName == "Cancel")
+            {
+
+            }
+        }
+        protected void btnSaveChanges_Click(object sender, EventArgs e) 
+        {
+            Booking NewData = new Booking();
+            txtBookingID.Text = (gvBookings.SelectedRow.Cells[1].Text).ToString();
+
+
+            NewData.DateReservedFrom = Convert.ToDateTime(gvBookings.SelectedRow.Cells[4].Text);
+            NewData.DateReservedFrom = Convert.ToDateTime(gvBookings.SelectedRow.Cells[4].Text);
+            NewData.DateReservedTo = Convert.ToDateTime(gvBookings.SelectedRow.Cells[5].Text);
         }
     }
     

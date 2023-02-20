@@ -33,14 +33,6 @@
       <Column Name="IsActiveBooking" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
     </Type>
   </Table>
-  <Function Name="dbo.sp_UpdateRoom" Method="sp_UpdateRoom">
-    <Parameter Name="RoomID" Parameter="roomID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="RoomName" Parameter="roomName" Type="System.String" DbType="NVarChar(30)" />
-    <Parameter Name="DateBookedFrom" Parameter="dateBookedFrom" Type="System.DateTime" DbType="Date" />
-    <Parameter Name="DateBookedTo" Parameter="dateBookedTo" Type="System.DateTime" DbType="Date" />
-    <Parameter Name="CreatedOn" Parameter="createdOn" Type="System.DateTime" DbType="Date" />
-    <Return Type="System.Int32" />
-  </Function>
   <Function Name="dbo.sp_InsertUser" Method="sp_InsertUser">
     <Parameter Name="Name" Parameter="name" Type="System.String" DbType="NVarChar(50)" />
     <Parameter Name="Surname" Parameter="surname" Type="System.String" DbType="NVarChar(50)" />
@@ -73,9 +65,11 @@
     <Parameter Name="BookingID" Parameter="bookingID" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.sp_updateDate" Method="sp_updateDate">
-    <Parameter Name="BookingID" Parameter="bookingID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="NewDate" Parameter="newDate" Type="System.DateTime" DbType="DateTime" />
+  <Function Name="dbo.sp_UpdateRoom" Method="sp_UpdateRoom1">
+    <Parameter Name="RoomID" Parameter="roomID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="DateBookedFrom" Parameter="dateBookedFrom" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="DateBookedTo" Parameter="dateBookedTo" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="CreatedOn" Parameter="createdOn" Type="System.DateTime" DbType="Date" />
     <Return Type="System.Int32" />
   </Function>
 </Database>

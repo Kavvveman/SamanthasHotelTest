@@ -25,7 +25,7 @@ namespace SamanthasHotelTest
         DBInstDataContext dbInstDataContext = new DBInstDataContext();  
 
         private void PopulateBookings()
-        {
+         {
             DBInstDataContext ctx = new DBInstDataContext();
             gvBookings.DataSource = ctx.sp_SelectAllBookings();
             gvBookings.DataBind();
@@ -33,24 +33,9 @@ namespace SamanthasHotelTest
 
         protected void gvBookings_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
+
             if (!this.IsPostBack) { PopulateBookings(); }
         }
-
-        //List<Booking> bookings = new List<Booking>();
-        //bookings = dbInstDataContext.sp
-
-
-        //private void Button1_Click(object sender, EventArgs e)
-        //{
-        //    foreach (DataGridViewRow dvr in dgLogList.SelectedRows)
-        //    {
-        //        if (dvr != null)
-        //        {
-        //            dgLogList.Rows.Remove(dvr);
-        //            dgLogList.Refresh();
-        //        }
-        //    }
-        //}
 
         List<Booking> bookings = new List<Booking>();
 
@@ -62,8 +47,6 @@ namespace SamanthasHotelTest
             {
                 if (dvr != null)
                 {
-                   
-                 
                 }
             }
             //Remove Booked room where BookingID matches Selected Row?
@@ -71,18 +54,14 @@ namespace SamanthasHotelTest
 
         protected void gvBookings_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
-
-            DBInstDataContext ctx = new DBInstDataContext();
-            int BookingID = Convert.ToInt32(gvBookings.DataKeys[e.RowIndex].Values[0]);
-            ctx.sp_DeleteBooking(BookingID);
-            ctx.SubmitChanges();
-            PopulateBookings();
-
-
+            if (!Page.IsPostBack)
+            {
+                DBInstDataContext ctx = new DBInstDataContext();
+                int BookingID = Convert.ToInt32(gvBookings.DataKeys[e.RowIndex].Values[0]);
+                ctx.sp_DeleteBooking(BookingID);//1000 covers for the auto indentity set to the column from sql
+                ctx.SubmitChanges();
+            }
         }
-
-
-
 
 
         protected void btnCancelBooking_Click(object sender, EventArgs e)
@@ -94,9 +73,20 @@ namespace SamanthasHotelTest
         {
             if (e.CommandName == "Delete")
             {
-                var id = Int32.Parse((string)e.CommandArgument);
-                Session.Add("BookingID", id);
-                gvBookings.DeleteRow(id);
+
+
+                var BookingID = Int32.Parse((string)e.CommandArgument);
+                DBInstDataContext ctx = new DBInstDataContext();
+
+
+
+                ctx.sp_DeleteBooking(1000+ BookingID);
+                //Delete from Database
+                //Account for identity on databas
+
+                gvBookings.DeleteRow(BookingID);
+                //Delete from frontend
+                ctx.SubmitChanges();
                 PopulateBookings();
             }
         }

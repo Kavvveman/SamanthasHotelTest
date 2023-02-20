@@ -26,6 +26,11 @@ namespace SamanthasHotelTest
                 DateTime ToDate = Convert.ToDateTime(dtpDateBookedTo.Value);
                 string RoomType = cmbRoomType.SelectedValue;
 
+                if (ToDate > FromDate )
+                {
+                    PageNote.Visible = true;
+                    PageNote.InnerHtml = "Please a FROM Date TO the AFTER Date";
+                }
                 if (FromDate != ToDate)
                 {
                     DaysRoomisBooked = (ToDate - FromDate).TotalDays;
@@ -47,13 +52,12 @@ namespace SamanthasHotelTest
 
                 PageNote.Visible= true;
 
-                PageNote.InnerText = cmbRoomType.SelectedValue.ToString() + "Room Has been successfully booked by ";
+                PageNote.InnerText = "An " + cmbRoomType.SelectedValue.ToString() + " Room Has been successfully booked From " + FromDate +" To " + ToDate;
             }
             catch (Exception ex)
             {
                 PageNote.InnerHtml = "Error Has Occured " + ex.Message.ToString();
                 // PageNote.InnerHtml= ("Error Has Occured +" ex.Message;
-                //throw;
             }
         }
         

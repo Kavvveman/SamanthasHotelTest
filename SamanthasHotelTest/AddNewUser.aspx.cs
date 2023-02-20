@@ -9,6 +9,7 @@ using System.Web.UI.WebControls;
 using System.IO;
 using System.Text.RegularExpressions;
 using WebGrease.Css.Ast;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace SamanthasHotelTest
 {
@@ -18,46 +19,44 @@ namespace SamanthasHotelTest
         {
 
         }
-        private bool ValidInput()
-        {
 
-
-
-            return true;
-        }
 
         Regex emailRegex = new Regex(@"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?
                                 ^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+
                                 [a-z0-9](?:[a-z0-9-]*[a-z0-9])?");
 
-        protected void btnAddUser_Click(object sender, EventArgs e)
+
+
+        private void ValidInput()
+        {
+            int i;
+            if (!int.TryParse(txtName.Text.ToString(), out i))
+            {
+                PageNoteAddUser.InnerText = "Name is a number only field";  
+            };
+
+            if (!int.TryParse(txtSurname.Text.ToString(), out i))
+            {
+                PageNoteAddUser.InnerText = "Surname is a number only field";
+            }
+
+            if (!emailRegex.IsMatch(txtEmail.Text.ToString()))
+            {
+                PageNoteAddUser.InnerText = "That Email is Invalid";
+            }
+            if (int.TryParse(txtCellNumber.Text.ToString(), out i))
+            {
+                PageNoteAddUser.InnerText = "Cellnumber cannot contain characters";
+            }
+
+        }
+
+
+
+        protected void btnCreateUser_Click(object sender, EventArgs e)
         {
             try
             {
-
-                int i;
-                if (!int.TryParse(txtName.Text.ToString(), out i))
-                {
-                    PageNoteAddUser.InnerText = "Name is a number only field";
-                    return;
-                };
-
-                if (!int.TryParse(txtSurname.Text.ToString(), out i))
-                {
-                    PageNoteAddUser.InnerText = "Surname is a number only field";
-                    return;
-                }
-
-                if (!emailRegex.IsMatch(txtEmail.Text.ToString()))
-                {
-                    PageNoteAddUser.InnerText = "That Email is Invalid";
-                    return;
-                }
-                if (int.TryParse(txtCellNumber.Text.ToString(), out i))
-                {
-                    PageNoteAddUser.InnerText = "Cellnumber cannot contain characters";
-                    return;
-                }
                 string FirstName = txtName.Text.ToString();
                 string Surname = txtSurname.Text.ToString();
                 string Email = txtEmail.Text.ToString();
@@ -68,18 +67,11 @@ namespace SamanthasHotelTest
                 var re = postedResult.InputStream;
                 var re1 = postedResult.FileName;
                 var re2 = postedResult.ContentType;
-                var re3 = postedResult.InputStream;
-
-                //--Hardcoded Until Can Get Image From FrontEnd
-                //BinaryReader binaryReader = new BinaryReader(re3);
-
-                int BinValue = 11125678;
-                Binary bio = new Binary(new byte[BinValue]);
-    
 
                 using (DBInstDataContext _DBC = new DBInstDataContext())
                 {
-                    _DBC.sp_InsertUser(FirstName, Surname, Email, Cellnum, IdNumber, bio);
+                    Byte[] Content = new BinaryReader(postedResult.InputStream).ReadBytes(postedResult.ContentLength);
+                    _DBC.sp_InsertUser(FirstName, Surname, Email, Cellnum, IdNumber, Content);
                 }
 
                 PageNoteAddUser.Visible = true;

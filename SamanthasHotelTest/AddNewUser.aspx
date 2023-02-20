@@ -65,8 +65,9 @@
             <br />
             <br />
 
-          <asp:button runat="server" id="btnAddUser" OnClick="btnAddUser_Click" Text="Create User"></asp:button>
-   
+        <asp:Button ID="btnCreateUser" runat="server" onclick="btnCreateUser_Click" Text="Create User" /> 
+
+        <asp:button id="btnSubmit" runat="server" onclick="btnCreateUser_Click" Text="Create"> </asp:button>
 
     </div>
 
