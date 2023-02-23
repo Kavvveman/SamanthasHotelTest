@@ -65,11 +65,12 @@
     <Parameter Name="BookingID" Parameter="bookingID" Type="System.Int32" DbType="Int" />
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.sp_UpdateRoom" Method="sp_UpdateRoom1">
+  <Function Name="dbo.sp_UpdateRoom" Method="sp_UpdateRoom">
     <Parameter Name="RoomID" Parameter="roomID" Type="System.Int32" DbType="Int" />
     <Parameter Name="DateBookedFrom" Parameter="dateBookedFrom" Type="System.DateTime" DbType="Date" />
     <Parameter Name="DateBookedTo" Parameter="dateBookedTo" Type="System.DateTime" DbType="Date" />
     <Parameter Name="CreatedOn" Parameter="createdOn" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="RoomName" Parameter="roomName" Type="System.String" DbType="VarChar(30)" />
     <Return Type="System.Int32" />
   </Function>
 </Database>

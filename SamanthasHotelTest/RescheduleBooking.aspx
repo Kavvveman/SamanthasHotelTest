@@ -1,7 +1,12 @@
 ﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site.Master" AutoEventWireup="true" CodeBehind="RescheduleBooking.aspx.cs" Inherits="SamanthasHotelTest.RescheduleBooking" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="MainContent" runat="server">
 
+    <a href="Content/bootstrap.min.css.map">Content/bootstrap.min.css.map</a>
+    <a href="Content/bootstrap-theme.min.css.map">Content/bootstrap-theme.min.css.map</a>
+    <style ></style>
+
     <p id="txtNote" runat="server" hidden="hidden"> </p>
+
     <asp:GridView ID="gvBookings" 
         runat="server" 
         AutoGenerateColumns="false"
@@ -25,7 +30,7 @@
              <asp:BoundField DataField="DateReservedFrom" HeaderText="Date Reserved From" />
             <asp:BoundField DataField="DateCreated" HeaderText="DateCreated" />
             <asp:BoundField DataField="IsActiveBooking" HeaderText="IsActiveBooking" />
-            <asp:CommandField ButtonType="Button" EditText="true" UpdateText="Update" ShowSelectButton="true" ShowEditButton="true" />
+            <asp:CommandField ButtonType="Button"  UpdateText="Update" ShowSelectButton="true" />
        
 <%--             <asp:BoundField HeaderText="Manager"
                     />--%>

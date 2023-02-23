@@ -76,7 +76,7 @@ namespace SamanthasHotelTest
 
                 PageNoteAddUser.Visible = true;
 
-                PageNoteAddUser.InnerText = "User " + FirstName + " Has Been Sucesssfully Added along with there details";
+                PageNoteAddUser.InnerText = "User " + FirstName + " Has Been Sucesssfully Added along with there details and photo";
 
 
             }

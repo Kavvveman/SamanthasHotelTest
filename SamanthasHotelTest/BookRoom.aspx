@@ -34,8 +34,11 @@
         </div>
 
             </div>
+    <br />
+    <br />
            
-
+               <p runat="server">The Vost of your booking is </p>  
+                <p runat="server" id="txtBookingPrice" hidden="hidden"> </p>
           
 
 </asp:Content>

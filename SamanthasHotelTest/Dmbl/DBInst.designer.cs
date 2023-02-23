@@ -124,9 +124,9 @@ namespace SamanthasHotelTest.Dmbl
 		}
 		
 		[global::System.Data.Linq.Mapping.FunctionAttribute(Name="dbo.sp_UpdateRoom")]
-		public int sp_UpdateRoom1([global::System.Data.Linq.Mapping.ParameterAttribute(Name="RoomID", DbType="Int")] System.Nullable<int> roomID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DateBookedFrom", DbType="Date")] System.Nullable<System.DateTime> dateBookedFrom, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DateBookedTo", DbType="Date")] System.Nullable<System.DateTime> dateBookedTo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CreatedOn", DbType="Date")] System.Nullable<System.DateTime> createdOn)
+		public int sp_UpdateRoom([global::System.Data.Linq.Mapping.ParameterAttribute(Name="RoomID", DbType="Int")] System.Nullable<int> roomID, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DateBookedFrom", DbType="Date")] System.Nullable<System.DateTime> dateBookedFrom, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="DateBookedTo", DbType="Date")] System.Nullable<System.DateTime> dateBookedTo, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="CreatedOn", DbType="Date")] System.Nullable<System.DateTime> createdOn, [global::System.Data.Linq.Mapping.ParameterAttribute(Name="RoomName", DbType="VarChar(30)")] string roomName)
 		{
-			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), roomID, dateBookedFrom, dateBookedTo, createdOn);
+			IExecuteResult result = this.ExecuteMethodCall(this, ((MethodInfo)(MethodInfo.GetCurrentMethod())), roomID, dateBookedFrom, dateBookedTo, createdOn, roomName);
 			return ((int)(result.ReturnValue));
 		}
 	}

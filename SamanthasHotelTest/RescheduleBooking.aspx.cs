@@ -4,15 +4,20 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Common.CommandTrees.ExpressionBuilder;
 using System.Linq;
+using System.Net.WebSockets;
+using System.Text;
+using System.Threading;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace SamanthasHotelTest
 {
     public partial class RescheduleBooking : System.Web.UI.Page
     {
+        WebSocket WebSocket = null;
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!this.IsPostBack)
@@ -67,12 +72,12 @@ namespace SamanthasHotelTest
 
         }
 
-        protected void gvBookings_RowUpdating(object sender, GridViewUpdateEventArgs e)
+      protected void gvBookings_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
 
         }
 
-        protected void gvBookings_RowCommand(object sender, GridViewCommandEventArgs e)
+        async protected void gvBookings_RowCommand(object sender, GridViewCommandEventArgs e)
         {
             if (e.CommandName == "Update")
             {
@@ -85,23 +90,40 @@ namespace SamanthasHotelTest
                 {
 
                 }
+
                 NewData.BookingID = Convert.ToInt32(gvBookings.SelectedRow.Cells[1].Text);
+                NewData.Name = gvBookings.SelectedRow.Cells[3].Text;
                 NewData.DateReservedFrom = Convert.ToDateTime(gvBookings.SelectedRow.Cells[4].Text);
                 NewData.DateReservedTo = Convert.ToDateTime(gvBookings.SelectedRow.Cells[5].Text);
 
+                var now = DateTime.Now;
+
+                byte[] data = Encoding.ASCII.GetBytes($"{now}");
 
 
-                ctx.sp_UpdateRoom1(NewData.BookingID, NewData.DateReservedFrom, NewData.DateReservedTo, DateTime.Now);
+                ctx.sp_UpdateRoom(NewData.BookingID, NewData.DateReservedFrom, NewData.DateReservedTo, DateTime.Now, NewData.Name);
+
+
 
                 ctx.SubmitChanges();
                 PopulateBookings();
-                //  ctx
-                //Get and Update the value clicked on
+                txtNote.Visible = true;
+                string Booking = NewData.BookingID.ToString();
+                txtNote.InnerHtml = "Booking  " + Booking + " has been changed";
+
+                long r = NewData.BookingID;
+                if (r == 1007)
+                {
+                    await WebSocket.CloseAsync(WebSocketCloseStatus.NormalClosure,
+                        "random closing", CancellationToken.None);
+
+                    return;
+                }
 
             }
             if (e.CommandName == "Cancel")
             {
-
+                return;
             }
         }
         protected void btnSaveChanges_Click(object sender, EventArgs e) 

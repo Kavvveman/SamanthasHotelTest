@@ -26,6 +26,10 @@ namespace SamanthasHotelTest
                 DateTime ToDate = Convert.ToDateTime(dtpDateBookedTo.Value);
                 string RoomType = cmbRoomType.SelectedValue;
 
+                // DateTime DaysRoomisBooked = new DateTime();
+
+                double PriceOfBooking = 0;
+
                 if (ToDate > FromDate )
                 {
                     PageNote.Visible = true;
@@ -34,7 +38,8 @@ namespace SamanthasHotelTest
                 if (FromDate != ToDate)
                 {
                     DaysRoomisBooked = (ToDate - FromDate).TotalDays;
-                    double PriceOfBooking = (DaysRoomisBooked * 120);
+
+                    PriceOfBooking = DaysRoomisBooked * 120;
                 }
                 else
                 {
@@ -48,11 +53,11 @@ namespace SamanthasHotelTest
 
                 //Change to Insert into Bookings Table
                 // Make instance of User Class
-
-
                 PageNote.Visible= true;
 
                 PageNote.InnerText = "An " + cmbRoomType.SelectedValue.ToString() + " Room Has been successfully booked From " + FromDate +" To " + ToDate;
+                txtBookingPrice.InnerText = PriceOfBooking.ToString();
+
             }
             catch (Exception ex)
             {
