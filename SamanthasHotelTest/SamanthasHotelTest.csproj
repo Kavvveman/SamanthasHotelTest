@@ -274,6 +274,10 @@
     <None Include=".dockerignore">
       <DependentUpon>Dockerfile</DependentUpon>
     </None>
+    <Content Include="Kubernetes\mysql-secret.yaml" />
+    <None Include="Kubernetes\MySQL.yaml" />
+    <Content Include="Kubernetes\docker-compose.override.yml" />
+    <Content Include="Kubernetes\docker-compose.yml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="RescheduleBooking.aspx" />
     <Content Include="Scripts\bootstrap.js" />
