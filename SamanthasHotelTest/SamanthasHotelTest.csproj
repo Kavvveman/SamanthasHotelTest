@@ -267,14 +267,14 @@
       <LastGenOutput>DBInst.designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </Content>
-    <None Include="Dmbl\DBInst.dbml.layout">
-      <DependentUpon>DBInst.dbml</DependentUpon>
-    </None>
-    <None Include="Dockerfile" />
     <None Include=".dockerignore">
       <DependentUpon>Dockerfile</DependentUpon>
     </None>
+    <None Include="Dmbl\DBInst.dbml.layout">
+      <DependentUpon>DBInst.dbml</DependentUpon>
+    </None>
     <Content Include="Kubernetes\mysql-secret.yaml" />
+    <None Include="Dockerfile" />
     <None Include="Kubernetes\MySQL.yaml" />
     <Content Include="Kubernetes\docker-compose.override.yml" />
     <Content Include="Kubernetes\docker-compose.yml" />
