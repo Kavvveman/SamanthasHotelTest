@@ -1,14 +1,9 @@
-﻿using Microsoft.Ajax.Utilities;
-using SamanthasHotelTest.Dmbl;
+﻿using SamanthasHotelTest.Dmbl;
 using System;
 using System.Collections.Generic;
-using System.Data;
-using System.Linq;
-using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace SamanthasHotelTest
 {
@@ -22,10 +17,10 @@ namespace SamanthasHotelTest
             }
         }
 
-        DBInstDataContext dbInstDataContext = new DBInstDataContext();  
+        DBInstDataContext dbInstDataContext = new DBInstDataContext();
 
         private void PopulateBookings()
-         {
+        {
             DBInstDataContext ctx = new DBInstDataContext();
             gvBookings.DataSource = ctx.sp_SelectAllBookings();
             gvBookings.DataBind();
@@ -80,7 +75,7 @@ namespace SamanthasHotelTest
 
 
 
-                ctx.sp_DeleteBooking(1000+ BookingID);
+                ctx.sp_DeleteBooking(1000 + BookingID);
                 //Delete from Database
                 //Account for identity on databas
 

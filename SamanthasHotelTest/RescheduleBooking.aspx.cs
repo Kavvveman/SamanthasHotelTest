@@ -1,17 +1,9 @@
 ﻿using SamanthasHotelTest.Dmbl;
 using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Common.CommandTrees.ExpressionBuilder;
-using System.Linq;
 using System.Net.WebSockets;
 using System.Text;
 using System.Threading;
-using System.Web;
-using System.Web.UI;
 using System.Web.UI.WebControls;
-using System.Windows.Forms;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.Rebar;
 
 namespace SamanthasHotelTest
 {
@@ -72,7 +64,7 @@ namespace SamanthasHotelTest
 
         }
 
-      protected void gvBookings_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        protected void gvBookings_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
 
         }
@@ -91,34 +83,28 @@ namespace SamanthasHotelTest
 
                 }
 
-                NewData.BookingID = Convert.ToInt32(gvBookings.SelectedRow.Cells[1].Text);
-                NewData.Name = gvBookings.SelectedRow.Cells[3].Text;
-                NewData.DateReservedFrom = Convert.ToDateTime(gvBookings.SelectedRow.Cells[4].Text);
-                NewData.DateReservedTo = Convert.ToDateTime(gvBookings.SelectedRow.Cells[5].Text);
+                NewData.BookingId = Convert.ToInt32(gvBookings.SelectedRow.Cells[1].Text);
+              //  NewData.User = gvBookings.SelectedRow.Cells[3].Text;
+               // NewData.startDate, = Convert.ToDateTime(gvBookings.SelectedRow.Cells[4].Text);
+             //   NewData.DateReservedTo = Convert.ToDateTime(gvBookings.SelectedRow.Cells[5].Text);
 
                 var now = DateTime.Now;
 
                 byte[] data = Encoding.ASCII.GetBytes($"{now}");
 
 
-                ctx.sp_UpdateRoom(NewData.BookingID, NewData.DateReservedFrom, NewData.DateReservedTo, DateTime.Now, NewData.Name);
+             //   ctx.sp_UpdateRoom(NewData.BookingID, NewData.DateReservedFrom, NewData.DateReservedTo, DateTime.Now, NewData.Name);
 
 
 
                 ctx.SubmitChanges();
                 PopulateBookings();
                 txtNote.Visible = true;
-                string Booking = NewData.BookingID.ToString();
-                txtNote.InnerHtml = "Booking  " + Booking + " has been changed";
+               // string Booking = NewData.BookingID.ToString();
+               // txtNote.InnerHtml = "Booking  " + Booking + " has been changed";
 
-                long r = NewData.BookingID;
-                if (r == 1007)
-                {
-                    await WebSocket.CloseAsync(WebSocketCloseStatus.NormalClosure,
-                        "random closing", CancellationToken.None);
-
-                    return;
-                }
+               // long r = NewData.BookingID;
+     
 
             }
             if (e.CommandName == "Cancel")
@@ -126,16 +112,16 @@ namespace SamanthasHotelTest
                 return;
             }
         }
-        protected void btnSaveChanges_Click(object sender, EventArgs e) 
+        protected void btnSaveChanges_Click(object sender, EventArgs e)
         {
             Booking NewData = new Booking();
             txtBookingID.Text = (gvBookings.SelectedRow.Cells[1].Text).ToString();
 
 
-            NewData.DateReservedFrom = Convert.ToDateTime(gvBookings.SelectedRow.Cells[4].Text);
-            NewData.DateReservedFrom = Convert.ToDateTime(gvBookings.SelectedRow.Cells[4].Text);
-            NewData.DateReservedTo = Convert.ToDateTime(gvBookings.SelectedRow.Cells[5].Text);
+            //NewData.DateReservedFrom = Convert.ToDateTime(gvBookings.SelectedRow.Cells[4].Text);
+            //NewData.DateReservedFrom = Convert.ToDateTime(gvBookings.SelectedRow.Cells[4].Text);
+            //NewData.DateReservedTo = Convert.ToDateTime(gvBookings.SelectedRow.Cells[5].Text);
         }
     }
-    
+
 }

@@ -22,14 +22,14 @@
 
 
         <label for="txtName">Name</label>
-        <asp:TextBox id="txtName"   ToolTip="Name" runat="server" required="true"> </asp:TextBox>
+        <asp:TextBox id="txtName" ToolTip="Name" runat="server" Text="Name" required="true"> </asp:TextBox>
 
         <br />
         <br />
 
 
        <label for="txtSurname">Surname</label>
-        <asp:TextBox  id="txtSurname"  ToolTip="Surname" required="true"  runat="server">  </asp:TextBox>
+        <asp:TextBox  id="txtSurname"  ToolTip="Surname" required="true" Text="Surname"  runat="server">  </asp:TextBox>
 
 
         <br />
@@ -37,22 +37,22 @@
 
 
         <label for="txtEmail">Email</label>
-        <asp:TextBox id="txtEmail"  runat="server" ToolTip="Email">  </asp:TextBox>
+        <asp:TextBox id="txtEmail" TextMode="Email" runat="server" ToolTip="Email" Text="Email">   </asp:TextBox>
         <%--Check For Regex?--%>
 
         <br />
         <br />
 
        <label for="txtCellNumber">Cellnumber</label>
-        <asp:TextBox id="txtCellNumber" maxlengh="10" ToolTip="CellNumber" required="true" runat="server" Text="">  </asp:TextBox>
+        <asp:TextBox id="txtCellNumber" maxlengh="10" TextMode="Number" ToolTip="CellNumber" required="true" runat="server" Text="Cellnum">  </asp:TextBox>
 
         <br />
         <br />
 
         <label for="txtIdNumber">IDNumber</label>
-       <asp:TextBox id="txtIdNumber" maxlengh="10" runat="server"  required="true"> </asp:TextBox>
+       <asp:TextBox id="txtIdNumber" maxlengh="10" runat="server" TextMode="Number" required="true"> </asp:TextBox>
 
-        <asp:RegularExpressionValidator id="RegularExpressionValidator1" runat="server" ErrorMessage="IDNumber Can only Contain Numbers" ValidationExpression="[0-9]*" ControlToValidate="txtIdNumber"></asp:RegularExpressionValidator>
+        <%--<asp:RegularExpressionValidator id="RegularExpressionValidator1" runat="server" ErrorMessage="IDNumber Can only Contain Numbers" ValidationExpression="[0-9]*" ControlToValidate="txtIdNumber"></asp:RegularExpressionValidator>--%>
 
 
         <br />
@@ -67,7 +67,7 @@
 
         <asp:Button ID="btnCreateUser" runat="server" onclick="btnCreateUser_Click" Text="Create User" /> 
 
-        <asp:button id="btnSubmit" runat="server" onclick="btnCreateUser_Click" Text="Create"> </asp:button>
+<%--        <asp:button id="btnSubmit" runat="server" onclick="btnCreateUser_Click" Text="Create"> </asp:button>--%>
 
     </div>
 

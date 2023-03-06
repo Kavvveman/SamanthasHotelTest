@@ -1,76 +1,79 @@
 ﻿<?xml version="1.0" encoding="utf-8"?><Database Name="KavenDB" Class="DBInstDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
   <Connection Mode="WebSettings" ConnectionString="Data Source=KAVENPC;Initial Catalog=KavenDB;Integrated Security=True;Connect Timeout=30;Encrypt=False;TrustServerCertificate=False" SettingsObjectName="System.Configuration.ConfigurationManager.ConnectionStrings" SettingsPropertyName="KavenDBConnectionString" Provider="System.Data.SqlClient" />
-  <Table Name="dbo.Rooms" Member="Rooms">
-    <Type Name="Room">
-      <Column Name="RoomID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="RoomName" Type="System.String" DbType="NVarChar(30)" CanBeNull="true" />
-      <Column Name="DateBookedFrom" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="DateBookedTo" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="CreatedOn" Type="System.DateTime" DbType="Date" CanBeNull="true" />
+  <Table Name="dbo.Booking" Member="Bookings">
+    <Type Name="Booking" Id="ID1">
+      <Column Name="BookingId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="startDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="endDate" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="costOfBooking" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="CreatedOn" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
       <Column Name="IsActiveBooking" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Association Name="Booking_UserHasBooking" Member="UserHasBookings" ThisKey="BookingId" OtherKey="BookingID" Type="UserHasBooking" />
+      <Association Name="User_Booking" Member="User" ThisKey="UserID" OtherKey="UserId" Type="User" IsForeignKey="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.UserHasBooking" Member="UserHasBookings">
+    <Type Name="UserHasBooking">
+      <Column Name="UserId" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="BookingID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Association Name="Booking_UserHasBooking" Member="Booking" ThisKey="BookingID" OtherKey="BookingId" Type="Booking" IsForeignKey="true" />
+      <Association Name="User_UserHasBooking" Member="User" ThisKey="UserId" OtherKey="UserId" Type="User" IsForeignKey="true" />
     </Type>
   </Table>
   <Table Name="dbo.Users" Member="Users">
     <Type Name="User">
-      <Column Name="UserID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Surname" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="Email" Type="System.String" DbType="NVarChar(255)" CanBeNull="true" />
-      <Column Name="CellNumber" Type="System.String" DbType="NVarChar(10)" CanBeNull="true" />
-      <Column Name="IDNumber" Type="System.String" DbType="NVarChar(13)" CanBeNull="true" />
-      <Column Name="UsersPhoto" Type="System.Data.Linq.Binary" DbType="Image" CanBeNull="true" UpdateCheck="Never" />
-      <Column Name="DateCreated" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UserId" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="FirstName" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Surname" Type="System.String" DbType="NVarChar(200)" CanBeNull="true" />
+      <Column Name="Email" Type="System.String" DbType="NVarChar(250)" CanBeNull="true" />
+      <Column Name="CellNumber" Type="System.String" DbType="NVarChar(13)" CanBeNull="true" />
+      <Column Name="Idnumber" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="Password" Type="System.String" DbType="VarChar(100)" CanBeNull="true" />
+      <Column Name="UserImage" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" CanBeNull="true" UpdateCheck="Never" />
+      <Association Name="User_Booking" Member="Bookings" ThisKey="UserId" OtherKey="UserID" Type="Booking" />
+      <Association Name="User_UserHasBooking" Member="UserHasBookings" ThisKey="UserId" OtherKey="UserId" Type="UserHasBooking" />
     </Type>
   </Table>
-  <Table Name="dbo.Bookings" Member="Bookings">
-    <Type Name="Booking">
-      <Column Name="BookingID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
-      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="DateReservedFrom" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="DateReservedTo" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="DateCreated" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="IsActiveBooking" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-    </Type>
-  </Table>
+  <Function Name="dbo.sp_InsertBooking" Method="sp_InsertBooking">
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="StartDate" Parameter="startDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="EndDate" Parameter="endDate" Type="System.DateTime" DbType="DateTime" />
+    <Parameter Name="CostOfBooking" Parameter="costOfBooking" Type="System.Int32" DbType="Int" />
+    <Parameter Name="IsActiveBooking" Parameter="isActiveBooking" Type="System.Boolean" DbType="Bit" />
+    <Return Type="System.Int32" />
+  </Function>
   <Function Name="dbo.sp_InsertUser" Method="sp_InsertUser">
     <Parameter Name="Name" Parameter="name" Type="System.String" DbType="NVarChar(50)" />
     <Parameter Name="Surname" Parameter="surname" Type="System.String" DbType="NVarChar(50)" />
     <Parameter Name="Email" Parameter="email" Type="System.String" DbType="NVarChar(255)" />
     <Parameter Name="CellNumber" Parameter="cellNumber" Type="System.String" DbType="NVarChar(10)" />
     <Parameter Name="IDNumber" Parameter="iDNumber" Type="System.String" DbType="NVarChar(13)" />
-    <Parameter Name="UsersPhoto" Parameter="usersPhoto" Type="System.Data.Linq.Binary" DbType="Image" />
+    <Parameter Name="UsersPhoto" Parameter="usersPhoto" Type="System.Data.Linq.Binary" DbType="VarBinary(MAX)" />
+    <Parameter Name="Password" Parameter="password" Type="System.String" DbType="NVarChar(200)" />
     <Return Type="System.Int32" />
   </Function>
-  <Function Name="dbo.sp_InsertBooking" Method="sp_InsertBooking">
-    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
-    <Parameter Name="Name" Parameter="name" Type="System.String" DbType="NVarChar(30)" />
-    <Parameter Name="DateReservedTo" Parameter="dateReservedTo" Type="System.DateTime" DbType="DateTime" />
-    <Parameter Name="DateReservedFrom" Parameter="dateReservedFrom" Type="System.DateTime" DbType="DateTime" />
-    <Parameter Name="IsActiveBooking" Parameter="isActiveBooking" Type="System.Boolean" DbType="Bit" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.sp_SelectAllBookings" Method="sp_SelectAllBookings">
-    <ElementType Name="sp_SelectAllBookingsResult">
-      <Column Name="BookingID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
-      <Column Name="UserID" Type="System.Int32" DbType="Int" CanBeNull="true" />
-      <Column Name="Name" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
-      <Column Name="DateReservedFrom" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="DateReservedTo" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="DateCreated" Type="System.DateTime" DbType="Date" CanBeNull="true" />
-      <Column Name="IsActiveBooking" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
-    </ElementType>
-  </Function>
-  <Function Name="dbo.sp_DeleteBooking" Method="sp_DeleteBooking">
-    <Parameter Name="BookingID" Parameter="bookingID" Type="System.Int32" DbType="Int" />
-    <Return Type="System.Int32" />
-  </Function>
-  <Function Name="dbo.sp_UpdateRoom" Method="sp_UpdateRoom">
+  <Function Name="dbo.sp_UpdateRoom" Method="sp_UpdateRoom" IsComposable="true">
     <Parameter Name="RoomID" Parameter="roomID" Type="System.Int32" DbType="Int" />
     <Parameter Name="DateBookedFrom" Parameter="dateBookedFrom" Type="System.DateTime" DbType="Date" />
     <Parameter Name="DateBookedTo" Parameter="dateBookedTo" Type="System.DateTime" DbType="Date" />
     <Parameter Name="CreatedOn" Parameter="createdOn" Type="System.DateTime" DbType="Date" />
     <Parameter Name="RoomName" Parameter="roomName" Type="System.String" DbType="VarChar(30)" />
+    <Return Type="object" />
+  </Function>
+  <Function Name="dbo.sp_DeleteBooking" Method="sp_DeleteBooking" IsComposable="true">
+    <Parameter Name="BookingID" Parameter="bookingID" Type="System.Int32" DbType="Int" />
+    <ElementType IdRef="ID1" />
+  </Function>
+  <Function Name="dbo.sp_UpdateBooking" Method="sp_UpdateBooking">
+    <Parameter Name="BookingID" Parameter="bookingID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="UserID" Parameter="userID" Type="System.Int32" DbType="Int" />
+    <Parameter Name="DateBookedFrom" Parameter="dateBookedFrom" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="DateBookedTo" Parameter="dateBookedTo" Type="System.DateTime" DbType="Date" />
+    <Parameter Name="CreatedOn" Parameter="createdOn" Type="System.DateTime" DbType="Date" />
     <Return Type="System.Int32" />
+  </Function>
+  <Function Name="dbo.sp_SelectAllBookings" Method="sp_SelectAllBookings">
+    <ElementType IdRef="ID1" />
   </Function>
 </Database>

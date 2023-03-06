@@ -24,58 +24,22 @@ namespace SamanthasHotelTest
         protected global::System.Web.UI.HtmlControls.HtmlGenericControl PageNote;
 
         /// <summary>
-        /// dtpDateBookedFrom control.
+        /// txtDateBookedFrom control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl dtpDateBookedFrom;
+        protected global::System.Web.UI.WebControls.TextBox txtDateBookedFrom;
 
         /// <summary>
-        /// dtpDateBookedTo control.
+        /// txtDateBookedTo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.HtmlControls.HtmlInputGenericControl dtpDateBookedTo;
-
-        /// <summary>
-        /// cmbRoomType control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.DropDownList cmbRoomType;
-
-        /// <summary>
-        /// Inside control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ListItem Inside;
-
-        /// <summary>
-        /// Outside control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ListItem Outside;
-
-        /// <summary>
-        /// Tent control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.ListItem Tent;
+        protected global::System.Web.UI.WebControls.TextBox txtDateBookedTo;
 
         /// <summary>
         /// btnSubmit control.

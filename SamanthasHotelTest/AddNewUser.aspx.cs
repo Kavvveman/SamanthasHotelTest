@@ -1,15 +1,7 @@
 ﻿using SamanthasHotelTest.Dmbl;
 using System;
-using System.Collections.Generic;
-using System.Data.Linq;
-using System.Linq;
-using System.Web;
-using System.Web.UI;
-using System.Web.UI.WebControls;
 using System.IO;
 using System.Text.RegularExpressions;
-using WebGrease.Css.Ast;
-using System.Runtime.InteropServices.ComTypes;
 
 namespace SamanthasHotelTest
 {
@@ -32,7 +24,7 @@ namespace SamanthasHotelTest
             int i;
             if (!int.TryParse(txtName.Text.ToString(), out i))
             {
-                PageNoteAddUser.InnerText = "Name is a number only field";  
+                PageNoteAddUser.InnerText = "Name is a number only field";
             };
 
             if (!int.TryParse(txtSurname.Text.ToString(), out i))
@@ -71,7 +63,14 @@ namespace SamanthasHotelTest
                 using (DBInstDataContext _DBC = new DBInstDataContext())
                 {
                     Byte[] Content = new BinaryReader(postedResult.InputStream).ReadBytes(postedResult.ContentLength);
-                    _DBC.sp_InsertUser(FirstName, Surname, Email, Cellnum, IdNumber, Content);
+                    //_DBC.sp_InsertUser(
+                    //    "1",
+                    //    FirstName,
+                    //    Surname,
+                    //    Email, 
+                    //    Cellnum, 
+                    //    IdNumber, 
+                    //    Content);
                 }
 
                 PageNoteAddUser.Visible = true;
