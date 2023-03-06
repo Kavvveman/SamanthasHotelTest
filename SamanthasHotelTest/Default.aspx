@@ -4,7 +4,7 @@
 
 
             <h2>Samanthas Booking Hotel</h2>
-            <h5>Welcome </h5>
+            <h5>Welcome </h5> <h5 id="txtUser" runat="server" ></h5>
 
 
         

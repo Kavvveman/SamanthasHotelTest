@@ -166,12 +166,8 @@
                 <label for="psw"><b>Password</b></label>
                 <input type="password" runat="server" id="txtPassword" placeholder="Enter Password" name="psw" required>
 
-
-                <asp:Button ID="btnSubmit"  runat="server" OnClick="btnSubmit_Click" OnClientClick="btnSubmit_ClientClick" Text="Login" />
-
-                <%--      <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
-      </label>--%>
+               <%--<asp:Button ID="btnCreateUser" runat="server" onclick="btnCreateUser_Click" Text="Create User" />--%>
+                <asp:Button ID="btnPost" runat="server" OnClick="btnPost_Click" />
             </div>
 
             <div class="container" style="background-color: #f1f1f1">

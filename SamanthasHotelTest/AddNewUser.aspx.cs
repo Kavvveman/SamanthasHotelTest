@@ -7,9 +7,9 @@ namespace SamanthasHotelTest
 {
     public partial class AddNewUser : System.Web.UI.Page
     {
-        protected void Page_Load(object sender, EventArgs e)
+        protected void Page_Load(object sender, EventArgs e, User _CurUser)
         {
-
+            
         }
 
 
@@ -54,6 +54,8 @@ namespace SamanthasHotelTest
                 string Email = txtEmail.Text.ToString();
                 string Cellnum = txtCellNumber.Text.ToString();
                 string IdNumber = txtIdNumber.Text.ToString();
+                string Password = txtPassword.Text.ToString();  
+
 
                 var postedResult = (inpAttachFile.PostedFile);
                 var re = postedResult.InputStream;
@@ -63,14 +65,14 @@ namespace SamanthasHotelTest
                 using (DBInstDataContext _DBC = new DBInstDataContext())
                 {
                     Byte[] Content = new BinaryReader(postedResult.InputStream).ReadBytes(postedResult.ContentLength);
-                    //_DBC.sp_InsertUser(
-                    //    "1",
-                    //    FirstName,
-                    //    Surname,
-                    //    Email, 
-                    //    Cellnum, 
-                    //    IdNumber, 
-                    //    Content);
+                    _DBC.sp_InsertUser(
+                        FirstName,
+                        Surname, 
+                        Email,
+                        Cellnum, 
+                        IdNumber, 
+                        Content, 
+                        Password);
                 }
 
                 PageNoteAddUser.Visible = true;
