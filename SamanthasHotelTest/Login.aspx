@@ -158,16 +158,12 @@
                 <label for="uname"><b>Username</b></label>
                 <input type="text" runat="server" ID="txtName" placeholder="Enter Username" name="uname" required>
 
-
-                <%--        <asp:TextBox runat="server"  Text="Username"> </asp:TextBox>--%>
-                <%--   <asp:TextBox runat="server"  Text="Password" TextMode="Password" > </asp:TextBox>--%>
-
-
                 <label for="psw"><b>Password</b></label>
                 <input type="password" runat="server" id="txtPassword" placeholder="Enter Password" name="psw" required>
 
-               <%--<asp:Button ID="btnCreateUser" runat="server" onclick="btnCreateUser_Click" Text="Create User" />--%>
-                <asp:Button ID="btnPost" runat="server" OnClick="btnPost_Click" />
+                    <asp:Button ID="btnSubmit"  OnClick="btnSubmit_Click" runat="server" Text="Login" />
+
+
             </div>
 
             <div class="container" style="background-color: #f1f1f1">

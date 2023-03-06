@@ -19,14 +19,9 @@ namespace SamanthasHotelTest
         public User _currentUser = new User();
         protected void Page_Load(object sender, EventArgs e)
         {
-        // public User _currentUser = new User();
-         // var principal = new User();
-         }
 
-        //TestUser
-        //protected void btnSubmit_Click(object sender, EventArgs e)
-        //{
-        //}
+        }
+
         private User RetrieveUser(User user)
         {
             try
@@ -60,22 +55,22 @@ namespace SamanthasHotelTest
                 throw;
             }
 
+        }
+        protected void btnGo_Click(object sender, EventArgs e)
+        {
+            //Get & Check users Password etc is valid
+            var principal = new User();
+            RetrieveUser(principal);
 
+            if (_currentUser != null)
+            {
+                Response.Redirect("Default.aspx?User=" + _currentUser);
 
-            //HttpContext.sess
-            //public void OnGet()
-            //{
-            //    if (string.IsNullOrEmpty(HttpContext.Session.GetString(SessionKeyName)))
-            //    {
-            //        HttpContext.Session.SetString(SessionKeyName, "The Doctor");
-            //        HttpContext.Session.SetInt32(SessionKeyAge, 73);
-            //    }
-            //    var name = HttpContext.Session.GetString(SessionKeyName);
-            //    var age = HttpContext.Session.GetInt32(SessionKeyAge).ToString();
+            }
+        }
 
-            //    _logger.LogInformation("Session Name: {Name}", name);
-            //    _logger.LogInformation("Session Age: {Age}", age);
-            //}
+        protected void btnSubmit_Click(object sender, EventArgs e)
+        {
 
         }
     }

@@ -33,12 +33,12 @@ namespace SamanthasHotelTest
         protected global::System.Web.UI.HtmlControls.HtmlInputPassword txtPassword;
 
         /// <summary>
-        /// btnPost control.
+        /// btnSubmit control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Button btnPost;
+        protected global::System.Web.UI.WebControls.Button btnSubmit;
     }
 }
