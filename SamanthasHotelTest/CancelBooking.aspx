@@ -4,18 +4,18 @@
 
 
 
-    <asp:GridView ID="gvBookings" runat="server" AutoGenerateColumns="false" DataKeyNames="BookingID"
-        PageSize="10" HeaderStyle-BackColor="LightSteelBlue" HeaderStyle-Font-Bold="true" AllowPaging="true" OnPageIndexChanging="gvBookings_PageIndexChanging" DeleteMethod="" OnRowCommand="gvBookings_RowCommand" OnRowDeleting="gvBookings_RowDeleting"  OnRowDeleted="gvBookings_RowDeleted">
+    <asp:GridView ID="gvBooking" runat="server" AutoGenerateColumns="false" DataKeyNames="BookingId"
+        PageSize="10" HeaderStyle-BackColor="LightSteelBlue" HeaderStyle-Font-Bold="true" AllowPaging="true" OnPageIndexChanging="gvBooking_PageIndexChanging" DeleteMethod="" OnRowCommand="gvBooking_RowCommand" OnRowDeleting="gvBooking_RowDeleting" OnRowDeleted="gvBooking_RowDeleted">
 
         <Columns>
-            <asp:BoundField DataField="BookingID" ShowHeader="true" HeaderText="Booking Id" />
+            <asp:BoundField DataField="BookingId" ShowHeader="true" HeaderText="Booking Id" />
             <asp:BoundField DataField="UserID" HeaderText="User ID" />
-            <asp:BoundField DataField="Name" HeaderText="Name" />
-             <asp:BoundField DataField="DateReservedTo" HeaderText="Date Reserved To" />
-             <asp:BoundField DataField="DateReservedFrom" HeaderText="Date Reserved From" />
-            <asp:BoundField DataField="DateCreated" HeaderText="DateCreated" />
+            <asp:BoundField DataField="startDate" HeaderText="Date Reserved To" />
+            <asp:BoundField DataField="endDate" HeaderText="Date Reserved From" />
+            <asp:BoundField DataField="costOfBooking" HeaderText="Booking Cost" />
+            <asp:BoundField DataField="CreatedOn" HeaderText="DateCreated" />
             <asp:BoundField DataField="IsActiveBooking" HeaderText="IsActiveBooking" />
-            <asp:CommandField ShowDeleteButton="true" HeaderText="Delete" ButtonType="Button"/>
+            <asp:CommandField ShowDeleteButton="true" HeaderText="Delete" ButtonType="Button" />
         </Columns>
     </asp:GridView>
 

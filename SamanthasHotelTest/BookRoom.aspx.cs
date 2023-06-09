@@ -5,9 +5,12 @@ namespace SamanthasHotelTest
 {
     public partial class BookRoom : System.Web.UI.Page
     {
+       
         protected void Page_Load(object sender, EventArgs e)
         {
-             var CurrentUser = new User();
+            var User1 = new Dmbl.User();
+            User1 = (Dmbl.User)Session["User"];
+         
         }
 
 
@@ -24,7 +27,10 @@ namespace SamanthasHotelTest
             }
             return "";
         }
-
+        public static String OverlappingBookingExists()
+        {
+            return "";
+        }
 
         protected void btnSubmit_Click(object sender, EventArgs e)
         {
@@ -41,10 +47,11 @@ namespace SamanthasHotelTest
                 {
                     PageNote.Visible = true;
                     PageNote.InnerHtml = "Cannot book a Check In Time Earlier than a Check Out Time";
+                    return;
                 }
                 if (FromDate != ToDate)
                 {
-                    DaysRoomisBooked = (ToDate.Date.Day - FromDate.Date.Day);
+                    DaysRoomisBooked = (ToDate.Date.Day - FromDate.Date.Day) + 1;
                     int RoomperDay = 120;
                     PriceOfBooking = Convert.ToInt32(DaysRoomisBooked) * RoomperDay;
                 }
@@ -52,17 +59,17 @@ namespace SamanthasHotelTest
                 {
                     DaysRoomisBooked = 1;
                 }
-                using (DBInstDataContext _DBC = new DBInstDataContext())
-                {
-                    //User CurrentUser = new User();
-                    _DBC.sp_InsertBooking(1, FromDate, ToDate, PriceOfBooking, true);
-                }
+                DBInstDataContext _DBC = new DBInstDataContext();
 
-                //Change to Insert into Bookings Table
-                // Make instance of User Class
+                var User1 = new Dmbl.User();
+                User1 = (Dmbl.User)Session["User"];
+
+                //User CurrentUser = new User();
+                _DBC.sp_InsertBooking(User1.UserId, FromDate, ToDate, PriceOfBooking, true);
+                
                 PageNote.Visible = true;
-
-                //PageNote.InnerText = "An " + cmbRoomType.SelectedValue.ToString() + " Room Has been successfully booked From " + FromDate + " To " + ToDate;
+                txtBookingPrice.Visible = true;
+                PageNote.InnerText = "Room Has been successfully booked From " + FromDate + " To " + ToDate +" By "+ User1.FirstName;
                 txtBookingPrice.InnerText = PriceOfBooking.ToString();
             }
             catch (Exception ex)

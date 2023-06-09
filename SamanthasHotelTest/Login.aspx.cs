@@ -13,12 +13,27 @@ using User = SamanthasHotelTest.Dmbl.User;
 
 namespace SamanthasHotelTest
 {
-
     public partial class Login : System.Web.UI.Page
     {
         public User _currentUser = new User();
         protected void Page_Load(object sender, EventArgs e)
         {
+
+        }
+
+        protected void btnSubmit_Click(object sender, EventArgs e)
+
+        {
+            var principal = new User();
+            RetrieveUser(principal);
+
+            Session.Add("User", _currentUser);
+
+            if (_currentUser != null)
+            {
+               // Response.Redirect("Default.aspx?User=" + _currentUser);
+                Response.Redirect("Default.aspx");
+            }
 
         }
 
@@ -56,22 +71,6 @@ namespace SamanthasHotelTest
             }
 
         }
-        protected void btnGo_Click(object sender, EventArgs e)
-        {
-            //Get & Check users Password etc is valid
-            var principal = new User();
-            RetrieveUser(principal);
-
-            if (_currentUser != null)
-            {
-                Response.Redirect("Default.aspx?User=" + _currentUser);
-
-            }
-        }
-
-        protected void btnSubmit_Click(object sender, EventArgs e)
-        {
-
-        }
+        
     }
 }

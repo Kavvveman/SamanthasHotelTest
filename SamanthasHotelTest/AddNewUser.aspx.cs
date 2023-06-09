@@ -78,7 +78,7 @@ namespace SamanthasHotelTest
                 PageNoteAddUser.Visible = true;
 
                 PageNoteAddUser.InnerText = "User " + FirstName + " Has Been Sucesssfully Added along with there details and photo";
-
+                ClearForm();
 
             }
             catch (Exception ex)
@@ -86,6 +86,15 @@ namespace SamanthasHotelTest
                 PageNoteAddUser.InnerHtml = "Error Has Occured " + ex.Message.ToString();
 
             }
+        }
+        private void ClearForm()
+        {
+            txtCellNumber.Text = string.Empty;
+            txtIdNumber.Text = string.Empty;    
+            txtPassword.Text = string.Empty;    
+            txtEmail.Text = string.Empty;       
+            txtIdNumber.Text = string.Empty;
+            txtPassword.Text = string.Empty;
         }
     }
 }

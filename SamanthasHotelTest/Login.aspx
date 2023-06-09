@@ -140,38 +140,44 @@
         }
     </style>
 
-    <h2>Login Form</h2>
+        <h4>Login</h4>
 
-    <button onclick="document.getElementById('id01').style.display='block'" style="width: auto;">Login</button>
+    <div class="imgcontainer">
+
+        <img src="Content/loginIcon.jpg" alt="Avatar" class="avatar" />
+    </div>
+
+
+
+    <div class="container">
+        <label for="uname"><b>Username</b></label>
+        <input type="text" runat="server" id="txtName" placeholder="Enter Username" name="uname" required>
+        <br />
+
+        <label for="psw"><b>Password</b></label>
+        <input type="password" runat="server" id="txtPassword" placeholder="Enter Password" name="psw" required>
+        <br />
+        <br />
+
+        <asp:Button ID="btnSubmit" runat="server" OnClick="btnSubmit_Click" Text="Login" />
+        <div class="container" style="background-color: #f1f1f1">
+            <%--<button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>--%>
+            <span class="psw">Forgot <a href="#">password?</a></span>
+        </div>
+
+    </div>
+
+
+
+
+<%--    <button onclick="document.getElementById('id01').style.display='block'" style="width: auto;">Login</button>
 
     <div id="id01" class="modal">
 
 
         <div class="modal-content animate" method="post">
-
-            <div class="imgcontainer">
-                <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-                <img src="Content/loginIcon.jpg" alt="Avatar" class="avatar" />
-            </div>
-
-            <div class="container">
-                <label for="uname"><b>Username</b></label>
-                <input type="text" runat="server" ID="txtName" placeholder="Enter Username" name="uname" required>
-
-                <label for="psw"><b>Password</b></label>
-                <input type="password" runat="server" id="txtPassword" placeholder="Enter Password" name="psw" required>
-
-                    <asp:Button ID="btnSubmit"  OnClick="btnSubmit_Click" runat="server" Text="Login" />
-
-
-            </div>
-
-            <div class="container" style="background-color: #f1f1f1">
-                <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-                <span class="psw">Forgot <a href="#">password?</a></span>
-            </div>
         </div>
-    </div>
+    </div>--%>
 
     <script>
         // Get the modal
@@ -184,5 +190,6 @@
             }
         }
     </script>
+
 
 </asp:Content>

@@ -13,77 +13,109 @@ namespace SamanthasHotelTest
         {
             if (!this.IsPostBack)
             {
-                this.PopulateBookings();
+                this.PopulateBooking();
             }
         }
 
         DBInstDataContext dbInstDataContext = new DBInstDataContext();
 
-        private void PopulateBookings()
+        private void PopulateBooking()
         {
-            DBInstDataContext ctx = new DBInstDataContext();
-            gvBookings.DataSource = ctx.sp_SelectAllBookings();
-            gvBookings.DataBind();
-        }
-
-        protected void gvBookings_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-
-            if (!this.IsPostBack) { PopulateBookings(); }
-        }
-
-        List<Booking> bookings = new List<Booking>();
-
-
-        protected void gvBookings_RowDeleted(object sender, GridViewDeletedEventArgs e)
-        {
-            e.Keys.Remove(gvBookings.SelectedIndex);
-            foreach (DataGridViewRow dvr in gvBookings.Rows)
-            {
-                if (dvr != null)
-                {
-                }
-            }
-            //Remove Booked room where BookingID matches Selected Row?
-        }
-
-        protected void gvBookings_RowDeleting(object sender, GridViewDeleteEventArgs e)
-        {
-            if (!Page.IsPostBack)
+            try
             {
                 DBInstDataContext ctx = new DBInstDataContext();
-                int BookingID = Convert.ToInt32(gvBookings.DataKeys[e.RowIndex].Values[0]);
-                ctx.sp_DeleteBooking(BookingID);//1000 covers for the auto indentity set to the column from sql
-                ctx.SubmitChanges();
+                gvBooking.DataSource = ctx.sp_SelectAllBookings();
+                gvBooking.DataBind();
             }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
+        }
+
+        protected void gvBooking_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+
+            if (!this.IsPostBack) { PopulateBooking(); }
+        }
+
+        List<Booking> Booking = new List<Booking>();
+
+
+        protected void gvBooking_RowDeleted(object sender, GridViewDeletedEventArgs e)
+        {
+            try
+            {
+                e.Keys.Remove(gvBooking.SelectedIndex);
+                foreach (DataGridViewRow dvr in gvBooking.Rows)
+                {
+                    if (dvr != null)
+                    {
+                    }
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+        }
+
+        protected void gvBooking_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            try
+            {
+                if (!Page.IsPostBack)
+                {
+                    DBInstDataContext ctx = new DBInstDataContext();
+                    int BookingID = Convert.ToInt32(gvBooking.DataKeys[e.RowIndex].Values[0]);
+                    ctx.sp_DeleteBooking(BookingID);//1000 covers for the auto indentity set to the column from sql
+                    ctx.SubmitChanges();
+                }
+            }
+            catch (Exception)
+            {
+
+                throw;
+            }
+
         }
 
 
         protected void btnCancelBooking_Click(object sender, EventArgs e)
         {
-            GridViewRow row = gvBookings.Rows[0];
+            GridViewRow row = gvBooking.Rows[0];
         }
 
-        protected void gvBookings_RowCommand(object sender, GridViewCommandEventArgs e)
+        protected void gvBooking_RowCommand(object sender, GridViewCommandEventArgs e)
         {
-            if (e.CommandName == "Delete")
+            try
+            {
+                if (e.CommandName == "Delete")
+                {
+                    var BookingID = Int32.Parse((string)e.CommandArgument);
+                    DBInstDataContext ctx = new DBInstDataContext();
+
+                    ctx.sp_DeleteBooking(BookingID);
+
+                    // ctx.sp_DeleteBooking(1000 + BookingID);
+                    //Delete from Database
+                    //Account for identity on databas
+
+                    gvBooking.DeleteRow(BookingID);
+                    //Delete from frontend
+                    ctx.SubmitChanges();
+                    PopulateBooking();
+                }
+            }
+            catch (Exception)
             {
 
-
-                var BookingID = Int32.Parse((string)e.CommandArgument);
-                DBInstDataContext ctx = new DBInstDataContext();
-
-
-
-                ctx.sp_DeleteBooking(1000 + BookingID);
-                //Delete from Database
-                //Account for identity on databas
-
-                gvBookings.DeleteRow(BookingID);
-                //Delete from frontend
-                ctx.SubmitChanges();
-                PopulateBookings();
+                throw;
             }
+           
         }
     }
 }
